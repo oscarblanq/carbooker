@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-type ContextType = {
+type DateContextType = {
   date: Date;
   setDate: (date: Date) => void;
 };
@@ -10,7 +10,7 @@ const initialValue = {
   setDate: (date: Date) => date,
 };
 
-export const DateContext = createContext<ContextType>(initialValue);
+export const DateContext = createContext<DateContextType>(initialValue);
 
 export const DateProvider: React.FC = ({ children }) => {
   const [date, setDate] = useState(new Date());

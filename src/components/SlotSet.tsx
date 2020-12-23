@@ -1,9 +1,10 @@
 import { useSlots } from '../hooks/useSlots';
+import { Loader } from 'semantic-ui-react';
 
 export const SlotSet: React.FC = () => {
   const { loading, slots } = useSlots();
   return loading ? (
-    <p>Cargando...</p>
+    <Loader active inline />
   ) : (
     <>
       {slots ? (
