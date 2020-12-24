@@ -1,6 +1,10 @@
 import { SlotType } from '../models/SlotType';
 
-export const slotsFromApi = (apiResponse: any): SlotType[] => {
+type APIData = {
+  data: SlotType[];
+};
+
+export const slotsFromApi = (apiResponse: APIData): SlotType[] => {
   const { data = [] } = apiResponse;
   if (Array.isArray(data)) {
     const slots = data.map(({ startTime, endTime, usersAvailable }) => ({

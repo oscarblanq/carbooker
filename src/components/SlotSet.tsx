@@ -1,5 +1,7 @@
 import { useSlots } from '../hooks/useSlots';
 import { Loader } from 'semantic-ui-react';
+import { SlotObject } from '../components/SlotObject';
+import styled from 'styled-components';
 
 export const SlotSet: React.FC = () => {
   const { loading, slots } = useSlots();
@@ -8,16 +10,19 @@ export const SlotSet: React.FC = () => {
   ) : (
     <>
       {slots ? (
-        <ul>
-          {slots.map(({ startTime, endTime, usersAvailable }) => (
-            <li key={Math.random()}>
-              Inicio: {startTime} | Final: {endTime} | Plazas: {usersAvailable}
-            </li>
+        <StyledList>
+          {slots.map((slot) => (
+            <SlotObject key={Math.random()} slot={slot} />
           ))}
-        </ul>
+        </StyledList>
       ) : (
-        <p>No existen fechas</p>
+        <p>No existen horas disponibles</p>
       )}
     </>
   );
 };
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
